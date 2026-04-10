@@ -71,7 +71,8 @@ public class Floor {
 
     /**
      * Press the button to call the first elevator.
-     * Requests the first elevator to stop at this floor.
+     * Requests an elevator to stop at this floor.
+     * If no elevator is going to this floor : we find the least busy elevator
      * 
      * @param elevators the list of elevators available in the hotel
      */
@@ -85,14 +86,12 @@ public class Floor {
         Elevator leastBusyElevator = elevators.get(0);
 
         for(Elevator elevator : elevators) {
-            
+            if (elevator.getDestinationQueueSize() < leastBusyElevator.getDestinationQueueSize()) {
+                leastBusyElevator = elevator;
+            }
         }
 
-
-
-
-
-        elevators.get(0).addDestination(this.number);
+        leastBusyElevator.addDestination(this.number);
     }
 
     /**

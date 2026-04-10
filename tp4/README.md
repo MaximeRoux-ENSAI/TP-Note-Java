@@ -4,44 +4,88 @@
 
 Maxime ROUX
 
----
+--
 
-## 1. Question 1
+# 2 Questions
 
-### 1.1
+## 2.1 Simulation setup
 
-### 1.2
+### 2.1.1 Set the probability that a person will arrive on the ground floor at each step to 0.65
 
----
+On va dans le fichier de config (**application.yml**), et on change :
+```yml
+spawn-probability:
+    ground: 0.65
+```
 
-## 2. Question 2
+### 2.1.2 Make sure that the number of floors and elevators can be easily configuredOn se rend compte que dans notre fichier Main on va chercher des variables (global) dans le fichier application.yml, :
+```java
+final int elevatorCapacity = Config.getInt("hotel.elevator.capacity");
+```
+On recopie la manière de faire, en créant deux variable : nbFloor, et nbElevator (Qu'on ajotue aussi dans le .yml).
 
-### 2.1
+Puis on va s'en servir pour initialise à l'aide de boucle dans notre main.
 
-### 2.2 
+### 2.1.3 Ensure that this value is retrieved from elsewhere and do not hard-code it
 
----
+On se ressert de ce qu'on a vu avant avec la config, en réajoutant :
 
-## 3. Question 3
 
-### 3.1 
+```java
+final int nbFloor = Config.getInt("hotel.floors.count");
+```
 
-### 3.2 
+Pour ne pas que ce soit coder de manière forte, mais bien que cela dépend de notre fichier de configuration.
 
----
+### 2.1.4.1  In the Elevator class: Add the isFull() method
 
-## 4. Question 4
+On fait tout simplement un test de la taille de la liste des passagers : 
 
-### 4.1 
+```java
+public boolean isFull(){
+        return (this.passengers.size() >= this.capacity);
+    }
+```
 
-### 4.2 
+### 2.1.4.2 Use it in another method of the same class
 
----
+On remplace dans la fonction **loadPassengers**, dans le test de la boucle while :
+```java
+this.passengers.size() < this.capacity
+```
+Par ce qu'on a fait avant : 
 
-## 5. Question 5
+```java
+!this.isFull()
+```
 
-### 5.1 
+Qui permet de mettre de la logique au lieu de simplement un test.
 
-### 5.2 
+## 2.2 Request an elevator
+
+### 2.2.1 Implement new rules
+
+On change la méthode **requestElevator** de Floor.
+
+On va premièrement vérifier s'il n'y a pas un elevator qui va à cet étage (avec une simple boucle for).
+En regardant :
+```java
+elevator.containDestination(this.number)
+```
+Si il y a un elevator qui y va on return (c'est bon).
+Sinon on va chercher l'elevator avec le moins d'étage avant son arrivé (*leastBusy*).
+
+### 2.2.2 Update the JavaDoc (to be done for each question if necessary)
+
+Fait (avec un anglais approximatif mais fait...)
+
+## 2.3 Target Floor
+
+On va modifier la fonction **generateTargetFloor**, et lui donner en argument notre Floor de départ.
+
+Maintenant, on va utiliser le `do {instruction} while (condition)` qui permet deffectuer une instruction puis après de tester si notre condition est respecté ou pas.
+On va donc générer notre Floor d'arriver de manière aléatoire puis tester si on a générer **startFloor**, si c'est le cas on re génère sinon sort puis return.
+
+
 
 ---
