@@ -18,7 +18,9 @@ spawn-probability:
     ground: 0.65
 ```
 
-### 2.1.2 Make sure that the number of floors and elevators can be easily configuredOn se rend compte que dans notre fichier Main on va chercher des variables (global) dans le fichier application.yml, :
+### 2.1.2 Make sure that the number of floors and elevators can be easily configured
+
+On se rend compte que dans notre fichier Main on va chercher des variables (global) dans le fichier application.yml, :
 ```java
 final int elevatorCapacity = Config.getInt("hotel.elevator.capacity");
 ```
@@ -73,7 +75,7 @@ En regardant :
 elevator.containDestination(this.number)
 ```
 Si il y a un elevator qui y va on return (c'est bon).
-Sinon on va chercher l'elevator avec le moins d'étage avant son arrivé (*leastBusy*).
+Sinon on va chercher l'elevator avec le moins d'étage avant son arrivé (*leastBusy*) en comparant la taille de la liste des destinations.
 
 ### 2.2.2 Update the JavaDoc (to be done for each question if necessary)
 
@@ -83,15 +85,15 @@ Fait (avec un anglais approximatif mais fait...)
 
 On va modifier la fonction **generateTargetFloor**, et lui donner en argument notre Floor de départ.
 
-Maintenant, on va utiliser le `do {instruction} while (condition)` qui permet deffectuer une instruction puis après de tester si notre condition est respecté ou pas.
+Maintenant, on va utiliser le `do {instruction} while (condition)` qui permet d'effectuer une instruction puis après de tester si notre condition est respecté ou pas.
 On va donc générer notre Floor d'arriver de manière aléatoire puis tester si on a générer **startFloor**, si c'est le cas on re génère sinon on sort puis return.
 
 ## 2.4 Unit test
 
 ### 2.4.1 Explain why it is complicated to test the isFull() method of the Elevator class.
 
-Ce qui est compliqué c'est que dans notre déclaration `private List<Person> passengers`, la lsite est privée donc ôn ne peut pas la remplir directement. 
-Car `isFull()` utilise cette lsite dans la condition.
+Ce qui est compliqué c'est que dans notre déclaration `private List<Person> passengers`, la liste est privée donc on ne peut pas la remplir directement, donc on doit ajouter une méthode pour contrôler l’état de l’ascenseur
+Car `isFull()` utilise cette liste dans la condition.
 
 ### 2.4.2 Add an appropriate method and code unit tests for method isFull()
 
@@ -114,7 +116,7 @@ On ajoute 3 test (pour être assez exhaustif) :
 
 On fait hériter (avec `extends`) la classe CrazyELevator de Elevator, on créer avec super un constructeur.
 
-On modifie la fonction  **move()** en ajoutant un random pour choissir entre les 3 possibilité et on fait.
+On modifie la fonction  **move()** en ajoutant un random pour choisir entre les 3 possibilité et on code les choix.
 On a du ajouter dans **Elevator** des getter et settet : *getDestinationQueue()*, *setCurrentFloor()*, pour la modification
 
 ### 2.5.2 Update the appropriate method : Half the time, a crazyElevator may decide not to unload its passengers.
@@ -123,7 +125,7 @@ On va modifier la fonction **unloadPassenger()** et mettre un random, soit elle 
 
 ### 2.5.3 If it is full, it will send all its passengers into another dimension.
 
-On va juste enlever tout les passagers quand on est full, pour cela on ajoute uen fonction propre dans dans **Elevator** : **clearPassenger()**
+On va juste enlever tout les passagers quand on est full, pour cela on ajoute une fonction propre dans dans **Elevator** : **clearPassenger()**
 
 ### 2.5.5 Add a crazy elevator in the hotel
 On rajoute proprement comme au début et on choisit dans la congif .yml de mettre 1.
@@ -149,7 +151,7 @@ public enum Direction {
 }
 ```
 
-Pour faciliter l'ajout on créer la fonction : **computeDirection()** dans la classe Person.
+Pour faciliter l'ajout on créer la fonction : **computeDirection()** dans la classe Person, ça permet de calculer simplement ou va la personne (UP, DOWN, IDLE).
 
 
 ### 2.6.2 Find the appropriate method for updating the direction
