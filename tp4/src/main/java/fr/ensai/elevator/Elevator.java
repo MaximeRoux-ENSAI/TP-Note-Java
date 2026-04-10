@@ -153,10 +153,23 @@ public class Elevator {
             this.currentFloor = destinationQueue.removeFirst();
     }
 
+    /**
+     * Ajouter un passager, si ce n'est pas plein
+     *
+     */
+    public void addPassenger(Person passenger) {
+        if (!isFull()) {
+            this.passengers.add(passenger);
+        } 
+        // else {
+        //         throw new ElevatorFull("Erreur : l'elevator est Full"));
+        //     }
+        // }
+    }
 
     /**
      * Fonction qui vérifie si un Elevator est plein
-     * @return 
+     * @return true if the elevator is full
      */
     public boolean isFull(){
         return (this.passengers.size() >= this.capacity);

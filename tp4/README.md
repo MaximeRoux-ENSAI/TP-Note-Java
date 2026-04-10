@@ -84,7 +84,22 @@ Fait (avec un anglais approximatif mais fait...)
 On va modifier la fonction **generateTargetFloor**, et lui donner en argument notre Floor de départ.
 
 Maintenant, on va utiliser le `do {instruction} while (condition)` qui permet deffectuer une instruction puis après de tester si notre condition est respecté ou pas.
-On va donc générer notre Floor d'arriver de manière aléatoire puis tester si on a générer **startFloor**, si c'est le cas on re génère sinon sort puis return.
+On va donc générer notre Floor d'arriver de manière aléatoire puis tester si on a générer **startFloor**, si c'est le cas on re génère sinon on sort puis return.
+
+## 2.4 Unit test
+
+### 2.4.1 Explain why it is complicated to test the isFull() method of the Elevator class.
+
+Ce qui est compliqué c'est que dans notre déclaration `private List<Person> passengers`, la lsite est privée donc ôn ne peut pas la remplir directement. 
+Car `isFull()` utilise cette lsite dans la condition.
+
+### 2.4.2 Add an appropriate method and code unit tests for method isFull()
+
+On va ajouter une méthode permettant d'ajouter des passagers **addPassenger** qui vérifie si c'est full et ajoute le passenger si c'est pas full.
+
+Ensuite on fait les test un **isFull_EmptyElevator** qui est quand c'est vide si on a bien false et l'autre **isFull_FullElevator** qui test si quand c'est plein on a  bien true.
+
+### 2.4.3 Create an run unit tests for method Elevator.addDestination()
 
 
 
