@@ -5,8 +5,12 @@ steps:
 hotel:
   elevator:
     capacity: 3
+  elevators:
+    count : 2
+  floors:
+    count : 4
   spawn-probability:
-    ground: 0.6
+    ground: 0.65
     other: 0.3
   display:
     column-width:
