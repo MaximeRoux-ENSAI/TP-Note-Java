@@ -22,6 +22,7 @@ public class Elevator {
     private int id;
     private int capacity;
     private int currentFloor;
+    private Direction direction;
     private List<Integer> destinationQueue;
     private List<Person> passengers;
     private List<Person> lastUnloaded;
@@ -40,6 +41,7 @@ public class Elevator {
         this.destinationQueue = new ArrayList<>();
         this.passengers = new ArrayList<>();
         this.lastUnloaded = new ArrayList<>();
+        this.direction = Direction.IDLE;
     }
 
     public int getId() {
@@ -48,6 +50,10 @@ public class Elevator {
 
     public int getCurrentFloor() {
         return this.currentFloor;
+    }
+
+    public Direction getDirection() {
+        return this.direction;
     }
 
     /**

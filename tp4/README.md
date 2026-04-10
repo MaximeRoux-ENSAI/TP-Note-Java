@@ -123,12 +123,31 @@ On va modifier la fonction **unloadPassenger()** et mettre un random, soit elle 
 
 ### 2.5.3 If it is full, it will send all its passengers into another dimension.
 
+On va juste enlever tout les passagers quand on est full, pour cela on ajoute uen fonction propre dans dans **Elevator** : **clearPassenger()**
 
-### 2.3.4 
+### 2.5.5 Add a crazy elevator in the hotel
 On rajoute proprement comme au début et on choisit dans la congif .yml de mettre 1.
+
 ```java
 for(int i = 0; i < nbCrazyElevator; i++){
             elevators.add(new CrazyElevator(nbElevator + i + 1, 0, elevatorCapacity));
         }
 ```
+
+
+## 2.6 Elevator Direction
+
+### 2.6.1 Add attribute direction to each Elevator and each Person
+
+On crée un enum pour ça, car on a 3 état : 
+
+```java
+public enum Direction {
+    UP,
+    DOWN,
+    IDLE
+}
+```
+
+Pour faciliter l'ajout on créer la fonction : **computeDirection()** dans la classe Person. 
 ---

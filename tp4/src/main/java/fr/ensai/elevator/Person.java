@@ -10,6 +10,7 @@ public class Person {
     private String nickname;
     private int startFloor;
     private int targetFloor;
+    private Direction direction;
 
     private static final String CHARS = "abcdefghijklmnopqrstuvwxyz";
     private static int NEXT_CHAR_INDEX = 0;
@@ -25,7 +26,10 @@ public class Person {
         this.nickname = Person.generateNickname();
         this.startFloor = startFloor;
         this.targetFloor = Person.generateTargetFloor(startFloor);
+        this.direction = Person.computeDirection(startFloor, startFloor);
     }
+
+
 
     /**
      * Generates a sequential nickname from the predefined character set.
@@ -64,6 +68,31 @@ public class Person {
 
     public int getTargetFloor() {
         return this.targetFloor;
+    }
+
+    /**
+     * On calcul la direction : 
+     * 
+     * - Si startFloor > targetFloor : On descend
+     * - Si startFloor < targetFloor : On monte
+     * - Sinon on fait rien
+     * 
+     * @param startFloor
+     * @param targetFloor
+     * @return LA DIRECTION
+     */
+    private static Direction computeDirection(int startFloor, int targetFloor) {
+        if (targetFloor > startFloor) {
+            return Direction.UP;
+        }
+        if (targetFloor < startFloor) {
+            return Direction.DOWN;
+        }
+        return Direction.IDLE;
+    }
+
+    public Direction getDirection() {
+        return this.direction;
     }
 
     @Override
