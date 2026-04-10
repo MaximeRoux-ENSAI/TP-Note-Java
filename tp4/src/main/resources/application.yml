@@ -9,7 +9,7 @@ hotel:
     count : 2
   crazyelevators:
     count : 1
-  floor:
+  floors:
     count : 4
   spawn-probability:
     ground: 0.65
