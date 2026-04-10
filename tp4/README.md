@@ -149,5 +149,12 @@ public enum Direction {
 }
 ```
 
-Pour faciliter l'ajout on créer la fonction : **computeDirection()** dans la classe Person. 
+Pour faciliter l'ajout on créer la fonction : **computeDirection()** dans la classe Person.
+
+
+### 2.6.2 Find the appropriate method for updating the direction
+
+Il faut donc update dans **move()**, en fonction du prochaine endroit où l'elevator doit aller.
+
+### Le bonnus est laisser
 ---

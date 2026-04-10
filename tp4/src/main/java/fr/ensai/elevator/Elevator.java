@@ -153,10 +153,26 @@ public class Elevator {
     /**
      * Moves the elevator to the next floor in its destination queue.
      * Removes that floor from the queue.
+     * 
+     * CHange la direction aussi
      */
     public void move() {
-        if (!destinationQueue.isEmpty())
-            this.currentFloor = destinationQueue.removeFirst(); // ou remove(0) ?
+        if (destinationQueue.isEmpty()) {
+            this.direction = Direction.IDLE;
+            return;
+        }
+
+        int nextFloor = destinationQueue.get(0);
+
+        if (nextFloor > this.currentFloor) {
+            this.direction = Direction.UP;
+        } else if (nextFloor < this.currentFloor) {
+            this.direction = Direction.DOWN;
+        } else {
+            this.direction = Direction.IDLE;
+        }
+
+        this.currentFloor = destinationQueue.remove(0);
     }
 
     /**
@@ -166,11 +182,7 @@ public class Elevator {
     public void addPassenger(Person passenger) {
         if (!isFull()) {
             this.passengers.add(passenger);
-        } 
-        // else {
-        //         throw new ElevatorFull("Erreur : l'elevator est Full"));
-        //     }
-        // }
+        }
     }
 
     /**
@@ -232,3 +244,4 @@ public class Elevator {
                 (unloaded.isBlank() ? "" : " " + unloaded);
     }
 }
+
