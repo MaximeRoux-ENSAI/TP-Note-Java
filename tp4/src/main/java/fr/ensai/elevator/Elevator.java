@@ -150,7 +150,7 @@ public class Elevator {
      */
     public void move() {
         if (!destinationQueue.isEmpty())
-            this.currentFloor = destinationQueue.removeFirst();
+            this.currentFloor = destinationQueue.removeFirst(); // ou remove(0) ?
     }
 
     /**
@@ -174,6 +174,30 @@ public class Elevator {
     public boolean isFull(){
         return (this.passengers.size() >= this.capacity);
     }
+
+    // Ajout de méthode pour CrazyElevator
+
+    protected List<Integer> getDestinationQueue() {
+    return this.destinationQueue;
+    }
+
+    protected List<Person> getPassengers() {
+        return this.passengers;
+    }
+
+    protected int getCapacity() {
+        return this.capacity;
+    }
+
+    protected void setCurrentFloor(int floor) {
+        this.currentFloor = floor;
+    }
+
+    // On ajoute aussi un clear passenger
+    protected void clearPassenger(){
+        this.passengers.clear();
+    }
+
 
     /**
      * Returns a string representation of the elevator at a specific floor,

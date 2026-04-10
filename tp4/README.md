@@ -101,6 +101,34 @@ Ensuite on fait les test un **isFull_EmptyElevator** qui est quand c'est vide si
 
 ### 2.4.3 Create an run unit tests for method Elevator.addDestination()
 
+On ajoute 3 test (pour être assez exhaustif) :
+
+- *addDestination_shoudlAddFloor_whenFloorGiven* : Basique permet de tester si le Floor qu'on ajoute est bien pris en compte
+- *addDestination_shouldNotDuplicated_WhenFloorAddedTwice* : Permet de vérifier qu'on ne duplique pas quand on rajoute el même floor (ça serait inutile)
+- *addDestination_AddMultipleFloor* : Vérifie que tout se passe bien s'il y a plusieurs Floor ajouter.
 
 
+## 2.5 Crazy Elevator
+
+### 2.5.1 Create a class CrazyElevator & Update the appropriate method
+
+On fait hériter (avec `extends`) la classe CrazyELevator de Elevator, on créer avec super un constructeur.
+
+On modifie la fonction  **move()** en ajoutant un random pour choissir entre les 3 possibilité et on fait.
+On a du ajouter dans **Elevator** des getter et settet : *getDestinationQueue()*, *setCurrentFloor()*, pour la modification
+
+### 2.5.2 Update the appropriate method : Half the time, a crazyElevator may decide not to unload its passengers.
+
+On va modifier la fonction **unloadPassenger()** et mettre un random, soit elle vide soit pas.
+
+### 2.5.3 If it is full, it will send all its passengers into another dimension.
+
+
+### 2.3.4 
+On rajoute proprement comme au début et on choisit dans la congif .yml de mettre 1.
+```java
+for(int i = 0; i < nbCrazyElevator; i++){
+            elevators.add(new CrazyElevator(nbElevator + i + 1, 0, elevatorCapacity));
+        }
+```
 ---

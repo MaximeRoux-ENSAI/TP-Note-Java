@@ -7,7 +7,9 @@ hotel:
     capacity: 3
   elevators:
     count : 2
-  floors:
+  crazyelevators:
+    count : 1
+  floor:
     count : 4
   spawn-probability:
     ground: 0.65
